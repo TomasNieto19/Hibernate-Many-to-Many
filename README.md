@@ -1,0 +1,2 @@
+# Hibernate-Many-to-Many
+.
