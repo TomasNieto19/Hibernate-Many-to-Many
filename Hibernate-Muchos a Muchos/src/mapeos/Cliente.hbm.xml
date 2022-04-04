@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="datos.Cliente" table="cliente">
+	
+		<id column="idCliente" name="idCliente">
+		
+			<generator class="identity" />
+			
+		</id>
+		
+		
+		<property column="apellido" name="apellido" type="string" />
+		
+		<property column="nombre" name="nombre" type="string" />
+		
+		<property column="dni" name="dni" type="int" />
+		
+		<property column="fechaDeNacimiento" name="fechaDeNacimiento" type="LocalDate" />
+		
+		<property column="baja" name="baja" type="boolean" />
+		
+
+		<set name="eventos" table="eventoxcliente" order-by="idEvento asc" outer-join="true" cascade="all" inverse="false" >
+			
+			<key column="idCliente"/>
+			
+			<many-to-many column="idEvento" class="datos.Evento"/>
+			
+		</set>
+		
+		
+	</class>
+	
+</hibernate-mapping>
